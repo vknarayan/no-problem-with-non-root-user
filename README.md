@@ -17,8 +17,8 @@ We need a solution where in we are able to create a user with UID of the host us
 
 In the dockerfile, we download gosu, copy entrypoint.sh etc., to the image. We set entrypoint.sh script as the ENTRYPOINT for the image, 
 which gets executed before the CMD.In the entrypoint.sh, we create a user in the container whose UID is same as on the host ( this UID is passed as a env value while running the container). Change the ownership of the microservice to the new user and run the microservice as this user.
----------------- common commands--------------------
+
+Common commands:
 docker build -f k9-filebeat-dockerfile -t custom-filebeat .
 docker container run -d -e host_UID=$UID --name custom-filebeat-container -v /var/lib/docker/containers:/usr/share/filebeat/containers custom-filebeat
 docker container exec -it custom-filebeat-container bash
---------------------------------------------------------------------
