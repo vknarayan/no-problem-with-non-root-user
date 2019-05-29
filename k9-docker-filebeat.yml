@@ -1,0 +1,35 @@
+filebeat.inputs:
+- type: docker
+  containers.path: "/usr/share/filebeat/containers"
+  containers.ids: 
+    - '*'
+#-------------------------- Elasticsearch output ------------------------------
+output.elasticsearch:
+# Array of hosts to connect to.
+  hosts: ["192.168.1.28:9200", "192.168.1.29:9200", "192.168.1.30:9200"]
+  index: "dockerlog-%{[beat.version]}-%{+yyyy.MM.dd}"
+# Optional protocol and basic auth credentials.
+  username: "username"
+  password: "password"
+
+#template loading is enabled by default
+setup.template.enabled: true
+setup.template.overwrite: true
+setup.template.name: "dockerlog-%{[beat.version]}"
+setup.template.pattern: "dockerlog-%{[beat.version]}-*"
+setup.template.fields: "/usr/share/filebeat/fields.yml"
+#------------------------kafka output--------------------------------
+#output.kafka:
+#  enabled: true
+#  hosts: ["192.168.1.31:9092","192.168.1.32:9092","192.168.1.33:9092"]
+#  message topic selection + partitioning
+#  topic: 'myDocker'
+#  codec.json:
+#  pretty: true
+
+
+
+
+
+
+
