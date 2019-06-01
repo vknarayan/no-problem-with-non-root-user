@@ -7,7 +7,7 @@ USER_ID=${host_UID:-9001}
 useradd --shell /bin/bash -u $USER_ID -o -c "" -m orange
 HOME=/home/orange
 
-#change ownership of filebeat.yml
+#change ownership of the mounted volume in the container
 chown -R orange:orange /usr/share/filebeat
 
 exec /usr/local/bin/gosu orange "$@"
