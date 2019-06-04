@@ -29,5 +29,3 @@ RUN chmod 640 /usr/share/filebeat/filebeat.yml
 
 #launch entrypoint for docker container
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-
-CMD ["filebeat", "-c", "filebeat.yml"]
