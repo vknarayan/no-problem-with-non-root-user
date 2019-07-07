@@ -13,11 +13,7 @@ output.elasticsearch:
   password: "password"
 
 #template loading is enabled by default
-setup.template.enabled: true
-setup.template.overwrite: true
-setup.template.name: "dockerlog-%{[beat.version]}"
-setup.template.pattern: "dockerlog-%{[beat.version]}-*"
-setup.template.fields: "/usr/share/filebeat/fields.yml"
+setup.template.enabled: false
 
 
 
